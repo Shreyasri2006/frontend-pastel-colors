@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    @apply bg-orange-50 text-stone-800 antialiased;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-orange-50;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-orange-50 rounded-full;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-orange-50 border border-orange-100 rounded-xl p-5 shadow-lg;
+  }
+  .card-glass {
+    @apply bg-orange-50/70 backdrop-blur-md border border-orange-100/50 rounded-xl p-5 shadow-lg;
+  }
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900;
+  }
+  .btn-primary {
+    @apply btn bg-sky-200 hover:bg-sky-200 text-white focus:ring-sky-200 active:scale-95;
+  }
+  .btn-danger {
+    @apply btn bg-pink-200 hover:bg-pink-200 text-white focus:ring-pink-200 active:scale-95;
+  }
+  .btn-ghost {
+    @apply btn bg-transparent hover:bg-orange-100 text-stone-700 focus:ring-orange-200;
+  }
+  .btn-outline {
+    @apply btn bg-transparent border border-orange-200 hover:bg-orange-100 text-stone-700;
+  }
+  .input {
+    @apply w-full bg-orange-100 border border-orange-100 rounded-lg px-3 py-2.5 text-sm text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-sky-200 focus:border-transparent transition-all;
+  }
+  .label {
+    @apply block text-xs font-medium text-stone-700 mb-1.5 uppercase tracking-wide;
+  }
+  .badge-low { @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-200/20 text-emerald-700 border border-emerald-200/30; }
+  .badge-moderate { @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-200/20 text-amber-800 border border-amber-200/30; }
+  .badge-high { @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-orange-200/20 text-orange-800 border border-orange-200/30; }
+  .badge-critical { @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-pink-200/20 text-pink-700 border border-pink-200/30 animate-pulse; }
+  .stat-card {
+    @apply card flex flex-col gap-2 hover:border-orange-100 transition-colors;
+  }
+  .nav-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 text-stone-700 hover:text-stone-800 hover:bg-orange-100/80;
+  }
+  .nav-link-active {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium bg-sky-200/20 text-sky-700 border border-sky-200/30;
+  }
+}
+
+/* Leaflet map overrides */
+.leaflet-container {
+  background: #fffaf0 !important;
+  font-family: 'Inter', sans-serif;
+}
+.leaflet-popup-content-wrapper {
+  @apply bg-orange-50 border border-orange-100 text-stone-800 rounded-xl shadow-2xl;
+}
+.leaflet-popup-tip {
+  background: #fff7ed;
+}
+.leaflet-control-zoom a {
+  @apply bg-orange-100 text-stone-800 border-orange-100;
+}
+.leaflet-control-attribution {
+  @apply bg-orange-50/80 text-stone-500;
+}
+
+/* Risk score ring animation */
+@keyframes riskPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(243, 183, 197, 0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(243, 183, 197, 0); }
+}
+.risk-critical-ring {
+  animation: riskPulse 2s ease-in-out infinite;
+}
